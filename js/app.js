@@ -17,6 +17,9 @@
  * Define Global Variables
  * 
 */
+const sections = document.querySelectorAll('section');
+const navBar = document.querySelector('#navbar__list');
+const df = document.createDocumentFragment();
 
 
 /**
@@ -24,7 +27,27 @@
  * Start Helper Functions
  * 
 */
+function buildNav() {
 
+  // create nav link for each section
+  sections.forEach(createNavLink)
+
+  function createNavLink(section) {
+    // create <li>
+    const liTag = document.createElement('li');
+
+    // create <a>
+    const aTag = document.createElement('a');
+    aTag.setAttribute('href', `#${section.id}`)
+    aTag.textContent = section.dataset.nav
+
+    // appending process
+    liTag.appendChild(aTag)
+    df.appendChild(liTag)
+    navBar.appendChild(df)
+
+  }
+}
 
 
 /**
@@ -34,7 +57,7 @@
 */
 
 // build the nav
-
+buildNav();
 
 // Add class 'active' to section when near top of viewport
 
