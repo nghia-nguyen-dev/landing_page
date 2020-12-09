@@ -30,23 +30,24 @@ const df = document.createDocumentFragment();
 function buildNav() {
 
   // create nav link for each section
-  sections.forEach(createNavLink)
 
-  function createNavLink(section) {
-    // create <li>
+  sections.forEach(section => {
+
+    // create <li></li>
     const liTag = document.createElement('li');
 
-    // create <a>
+    // create <a></a> and insert data
     const aTag = document.createElement('a');
-    aTag.setAttribute('href', `#${section.id}`)
-    aTag.textContent = section.dataset.nav
+    aTag.setAttribute('href', `#${section.id}`);
+    aTag.textContent = section.dataset.nav;
 
     // appending process
-    liTag.appendChild(aTag)
-    df.appendChild(liTag)
-    navBar.appendChild(df)
+    liTag.appendChild(aTag);
+    df.appendChild(liTag);
+    navBar.appendChild(df);
 
-  }
+  });
+
 }
 
 
@@ -60,6 +61,9 @@ function buildNav() {
 buildNav();
 
 // Add class 'active' to section when near top of viewport
+
+  // check if top of section hits top viewport
+
 
 
 // Scroll to anchor ID using scrollTO event
