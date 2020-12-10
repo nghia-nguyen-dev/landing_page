@@ -221,3 +221,19 @@ section.your-active-class .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+/* ---- navBar styling ---- */
+#navbar__list {
+    padding: 16px 5em;
+}
+
+#navbar__list li {
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+@media(max-width: 35em) {
+    #navbar__list {
+        padding: 16px 2em;
+    }
+}
