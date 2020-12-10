@@ -39,10 +39,10 @@ const df = document.createDocumentFragment();
 function buildNav() {
   // create nav link for each section
   sections.forEach((section) => {
-    // create <li></li>
+    // create <li>
     const liTag = document.createElement("li");
 
-    // create <a></a> and insert data
+    // create <a> and insert data
     const aTag = document.createElement("a");
     aTag.setAttribute("href", `#${section.id}`);
     aTag.textContent = section.dataset.nav;
@@ -54,7 +54,7 @@ function buildNav() {
   });
 }
 
-buildNav();
+
 
 // Add class 'active' to section when near top of viewport
 
@@ -75,6 +75,7 @@ buildNav();
   // cb that will be triggered
   function activeState(entries) {
     entries.forEach((entry) => {
+      console.log(entry.intersectionRatio);
       if (entry.intersectionRatio >= 1) {
         entry.target.classList.toggle("your-active-class");
       } else {
@@ -84,6 +85,24 @@ buildNav();
   }
 
 // Scroll to anchor ID using scrollTO event
+navBar.addEventListener('click', evt => {
+
+  // prevents default jump to section
+  evt.preventDefault();
+
+  // extract value from href attr
+  const id = evt.target.getAttribute('href');
+
+  // ref that specific section
+  const section = document.querySelector(`${id}`)
+
+  // scroll to section
+  window.scrollTo({
+    top: section.offsetTop,
+    behavior: 'smooth',
+  })
+
+})
 
 /**
  * End Main Functions
@@ -92,6 +111,7 @@ buildNav();
  */
 
 // Build menu
+buildNav();
 
 // Scroll to section on link click
 
