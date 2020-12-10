@@ -26,9 +26,10 @@ const df = document.createDocumentFragment();
  * Start Helper Functions
  *
  */
-function createElement(ele) {
+
+const createElement = (ele) => {
   return document.createElement(ele);
-}
+};
 
 /**
  * End Helper Functions
@@ -38,8 +39,7 @@ function createElement(ele) {
 
 // build the nav
 
-function buildNav() {
-
+const buildNav = () => {
   // create nav link for each section
   sections.forEach((section) => {
     // create <li>
@@ -54,30 +54,23 @@ function buildNav() {
     liTag.appendChild(aTag);
     df.appendChild(liTag);
     navBar.appendChild(df);
-  })
-
-}
+  });
+};
 
 // Add class 'active' to section when near top of viewport
 
 // Check if section intersects with viewport using the Intersection Observer API
 
-function setActiveSection() {
-
-  // Creating an intersection observer and options
+const setActiveSection = () => {
+  // options to be passed in
   let options = {
     root: null,
     rootMargin: `0px`,
     threshold: 1,
   };
 
-  let observer = new IntersectionObserver(callback, options);
-
-  // Adding each section to be observed
-  sections.forEach((section) => observer.observe(section));
-
-  // cb that will be triggered
-  function callback(entries) {
+  // callback
+  const callback = (entries) => {
     entries.forEach((entry) => {
       if (entry.intersectionRatio >= 1) {
         entry.target.classList.toggle(`your-active-class`);
@@ -85,13 +78,18 @@ function setActiveSection() {
         entry.target.classList.remove(`your-active-class`);
       }
     });
-  }
+  };
 
-}
+  // create observer
+  let observer = new IntersectionObserver(callback, options);
+
+  // Adding each section to be observed
+  sections.forEach((section) => observer.observe(section));
+};
 
 // Scroll to anchor ID using scrollTO event
 
-function scrollToSection(evt) {
+const scrollToSection = (evt) => {
   // prevents default jump to section
   evt.preventDefault();
 
@@ -99,14 +97,14 @@ function scrollToSection(evt) {
   const id = evt.target.getAttribute(`href`);
 
   // ref that specific section
-  const section = document.querySelector(`${id}`)
+  const section = document.querySelector(`${id}`);
 
   // scroll to section
   window.scrollTo({
     top: section.offsetTop,
     behavior: `smooth`,
-  })
-};
+  });
+}
 
 /**
  * End Main Functions
