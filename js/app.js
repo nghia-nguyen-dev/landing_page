@@ -17,9 +17,9 @@
  * Define Global Variables
  *
  */
-const sections = document.querySelectorAll(`section`);
+
 const navBar = document.querySelector(`#navbar__list`);
-const df = document.createDocumentFragment();
+
 
 /**
  * End Global Variables
@@ -40,6 +40,9 @@ const createElement = (ele) => {
 // build the nav
 
 const buildNav = () => {
+  const sections = document.querySelectorAll(`section`);
+  const df = document.createDocumentFragment();
+
   // create nav link for each section
   sections.forEach((section) => {
     // create <li>
@@ -62,6 +65,8 @@ const buildNav = () => {
 // Check if section intersects with viewport using the Intersection Observer API
 
 const setActiveSection = () => {
+  const sections = document.querySelectorAll(`section`);
+
   // options to be passed in
   let options = {
     root: null,
