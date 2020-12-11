@@ -20,7 +20,6 @@
 
 const navBar = document.querySelector(`#navbar__list`);
 
-
 /**
  * End Global Variables
  * Start Helper Functions
@@ -109,7 +108,7 @@ const scrollToSection = (evt) => {
     top: section.offsetTop,
     behavior: `smooth`,
   });
-}
+};
 
 /**
  * End Main Functions
